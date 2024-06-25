@@ -1,0 +1,41 @@
+Setup Django project:
+
+1. create virtual environment - virtualenv env
+2. Activate virtual environment - env\scripts\activate
+3. install Django - pip install Django
+4. start project - django-admin startproject studybud
+5. enter project - cd studybud
+6. Run server - python manage.py runserver
+7. create base application - python manage.py startapp base
+8. connect to application - 
+	settings.py -> INSTALLED_APPS = [...., 'base.apps.BaseConfig', ]
+
+Let the Django know the template:
+settings.py -> TEMPLATES -> DIRS: [ BASE_DIR / 'templates'],
+
+
+
+-----------------------------------------------------------------------
+
+Activate virtual environment before start project (step 2.)
+
+--------------------------------------------------------------------------------
+
+Start project: at command line
+
+django-admin startproject "folder_name"
+cd "folder_name"
+python manage.py runserver
+
+-------------------------------------------------------------------------------------
+wsgi.py = web server gateway interface
+
+urls.py = list of different url path (home, admin, menu...)
+
+asgi.py = asynchronous file
+
+settings.py = core project configuration, command center
+
+
+
+5:35:00

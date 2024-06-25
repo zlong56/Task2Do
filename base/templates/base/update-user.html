@@ -1,0 +1,43 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+
+
+
+<div class="header-bar">
+    <div>
+        <h1><a href="{% url 'user-profile' user.id %}" class="back2">&#8592;</a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Update Profile</h1>
+    </div>
+</div>
+
+<div class="card-body">
+    <form class="" action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form__group">
+            <label for="{{ field.id_for_label }}"><strong>{{ field.label }}</strong></label>
+            {% if field.name == 'dob' %}
+            <div style="display: flex; align-items: center;">
+                {% if field.value %}
+                <input type="date" id="{{ field.id }}" name="{{ field.name }}" value="{{ field.value|date:'Y-m-d' }}" class="form-control">
+                {% else %}
+                <input type="date" id="{{ field.id }}" name="{{ field.name }}" class="form-control">
+                {% endif %}
+            </div>
+            {% else %}
+            {{ field }}
+            {% endif %}
+        </div>
+        {% endfor %}
+
+        <div class="card-body">
+            <p></p>
+            <button class="button" type="submit">Update</button>
+            <a class="cancel-button" href="{% url 'user-profile' user.id %}">Cancel</a>
+        </div>
+
+    </form>
+</div>
+
+
+{% endblock content %}

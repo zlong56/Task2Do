@@ -1,0 +1,44 @@
+{% extends 'base/main.html' %}
+{% block content %}
+
+<div class="header-login">
+    <h1>Sign Up</h1>
+</div>
+
+<div class="login-register">
+    <form method="POST">
+        {% csrf_token %}
+        <label>{{form.name.label}}:</label>
+        {{form.name}}
+
+        <label>{{form.dob.label}}:</label>
+        {{form.dob}}
+
+        <label>{{form.email.label}}:</label>
+        {{form.email}}
+
+        <label>{{form.address.label}}:</label>
+        {{form.address}}
+
+        <label>{{form.phoneno.label}}:</label>
+        {{form.phoneno}}
+
+        <label>{{form.password1.label}}:</label>
+        {{form.password1}}
+
+        <label>{{form.password2.label}}:</label>
+        {{form.password2}}
+        <input style="margin-top: 40px ;" class="button" type="submit" value="Register">
+    </form>
+    <p style="margin-left: 10px;">Already have account? <a href="{% url 'login' %}">Login</a></p> 
+</div>
+
+<script>
+    $(document).ready(function() {
+        $("#id_dob").datepicker({
+            dateFormat: 'yy-mm-dd'
+        });
+    });
+</script>
+
+{% endblock content %}

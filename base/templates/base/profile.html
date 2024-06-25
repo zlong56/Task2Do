@@ -1,0 +1,64 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+
+<div class="header-bar">
+    <div>
+        <h1><a href="{% url 'tasks' %}" class="back2">&#8592;</a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Personal Information</h1>
+    </div>
+</div>
+
+
+<div class="profile-container">
+    <p><img style="margin-top: 30px;" class="avatar" src="{{ user.avatar.url }}" width="250" alt="{{ user.name }}"></p>
+    <b><p>@{{ user.name }}</p></b>
+</div>
+
+<div style="margin-top: 20px;" class="profile-container">
+    <a class="edit-profile-link" href="{% url 'update-user' %}">Edit Profile</a>
+</div>
+
+
+<div class="profile-table">
+    <table>
+        <tr>
+            <td><strong>Email:</strong></td>
+            <td>{{ user.email }}</td>
+        </tr>
+        <tr>
+            <td><strong>Phone:</strong></td>
+            <td>{{ user.phoneno }}</td>
+        </tr>
+        <tr>
+            <td><strong>Address:</strong></td>
+            <td>{{ user.address }}</td>
+        </tr>
+        <tr>
+            <td><strong>Date of Birth:</strong></td>
+            <td>{{ user.dob }}</td>
+        </tr>
+        <tr>
+            <td><strong>Last Login:</strong></td>
+            <td>{{ user.last_login }}</td>
+        </tr>
+        <tr>
+            <td><strong>Account Created:</strong></td>
+            <td>{{ user.date_joined }}</td>
+        </tr>
+    </table>
+</div>
+
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
+
+
+{% for flashmsg in messages %}
+<script>
+    alertify.set('notifier','position', 'top-center');
+    alertify.success('{{flashmsg}}');
+</script>
+{% endfor %}
+
+
+
+
+{% endblock content %}

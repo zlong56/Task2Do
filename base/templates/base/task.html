@@ -1,0 +1,37 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+
+<div>
+    <div class="header-bar">
+        <a href="{% url 'tasks' %}" class="back">&#8592; Back</a>
+    </div>
+</div>
+
+<div class="card-body">
+    <h1 style="font-weight: 1000; font-size: 40px;">{{ task.title }}</h1>
+    <hr>
+    <p><strong>Description:</strong> {{ task.description }}</p>
+    <p><strong>Created:</strong> {{ task.created }}</p>
+    <p><strong>Last Changed:</strong> {{ task.lastchange|date:"F d, Y H:i" }}</p>
+    <p><strong>Due Date:</strong> {{ task.duedate|date:"F d, Y H:i" }}</p>
+    <p><strong>Status:</strong> {% if task.complete %}Completed{% else %}Pending{% endif %}</p>
+    {% if task.photo %}
+        <p><strong>Photo:</strong><img src="{{ task.photo.url }}" width="250"></p>
+    {% else %}
+        <p><strong>Photo:</strong> - </p>
+    {% endif %}
+    {% if task.document %}
+        <p><strong>Document:</strong>
+            <i><a class="document" href="{{ task.document.url }}" download>{{task.document.url}}</a></i>
+        </p>
+    {% else %}
+        <p><strong>Document:</strong> - </p>
+    {% endif %}
+    
+</div>
+
+
+
+
+{% endblock content %}

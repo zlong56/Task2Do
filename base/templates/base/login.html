@@ -1,0 +1,22 @@
+{% extends 'base/main.html' %}
+{% block content %}
+
+<div class="header-login">
+    <h1>Welcome to Task2Do</h1>
+</div>
+
+<div class="login-register">
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <div style="display: flex;
+                    justify-content: center; 
+                    margin-top: 40px;">
+            <input class="button" type="submit" value="Login">
+            <a class="button" style="margin-left: 10px;" href="{% url 'signup' %}">Sign Up</a>
+        </div>
+    </form>
+</div>
+
+
+{% endblock content %}
